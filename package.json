@@ -1,0 +1,26 @@
+{
+  "name": "netlify-build-plugin-pushover",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AshikNesin/netlify-build-plugin-pushover.git"
+  },
+  "keywords": [
+    "netlify",
+    "netlify-plugin"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AshikNesin/netlify-build-plugin-pushover/issues"
+  },
+  "homepage": "https://github.com/AshikNesin/netlify-build-plugin-pushover#readme",
+  "dependencies": {
+    "axios": "^0.19.2"
+  }
+}
