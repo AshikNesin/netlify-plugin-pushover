@@ -14,8 +14,8 @@
     "netlify",
     "netlify-plugin"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "Ashik Nesin <mail@ashiknesin.com>",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/AshikNesin/netlify-build-plugin-pushover/issues"
   },
