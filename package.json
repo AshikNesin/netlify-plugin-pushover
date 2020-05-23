@@ -1,5 +1,5 @@
 {
-  "name": "netlify-build-plugin-pushover",
+  "name": "netlify-plugin-pushover",
   "version": "0.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AshikNesin/netlify-build-plugin-pushover.git"
+    "url": "git+https://github.com/AshikNesin/netlify-plugin-pushover.git"
   },
   "keywords": [
     "netlify",
@@ -17,9 +17,9 @@
   "author": "Ashik Nesin <mail@ashiknesin.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AshikNesin/netlify-build-plugin-pushover/issues"
+    "url": "https://github.com/AshikNesin/netlify-plugin-pushover/issues"
   },
-  "homepage": "https://github.com/AshikNesin/netlify-build-plugin-pushover#readme",
+  "homepage": "https://github.com/AshikNesin/netlify-plugin-pushover#readme",
   "dependencies": {
     "axios": "^0.19.2"
   }
