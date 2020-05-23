@@ -1,6 +1,7 @@
 const {
     env: { PUSHOVER_USER_KEY, PUSHOVER_API_TOKEN, URL },
 } = require('process');
+
 const sendPushOverNotification = require('./pushover-helper');
 
 const getSuccessMsg = () =>
@@ -22,14 +23,14 @@ module.exports = {
     name: 'netlify-plugin-pushover',
     async onSuccess() {
         if (precheck()) {
-            console.log('onSuccess: Sending message via PushOver');
+            console.log('Sending build success message via PushOver');
             const message = getSuccessMsg();
             await sendPushOverNotification({ message });
         }
     },
     async onError() {
         if (precheck()) {
-            console.log('onError: Sending message via PushOver');
+            console.log('Sending build failed message via PushOver');
             const message = getErrorMsg();
             await sendPushOverNotification({
                 message,
