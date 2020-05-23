@@ -12,7 +12,7 @@ const getErrorMsg = () =>
 const precheck = () => {
     if (!PUSHOVER_USER_KEY || !PUSHOVER_API_TOKEN) {
         console.log(
-            'PUSHOVER_USER_KEY or PUSHOVER_API_TOKEN is not available in environment variable'
+            'PUSHOVER_USER_KEY or PUSHOVER_API_TOKEN is not available as environment variable'
         );
         return false;
     }
