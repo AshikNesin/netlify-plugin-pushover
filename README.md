@@ -1,5 +1,5 @@
 # Netlify Pushover Deploy Plugin
-After a successful/error Netlify build send  real-time notifications to your Android, iPhone, iPad, and Desktop via [Pushover](http://pushover.net)
+After a successful/error build send  real-time notifications to your Android, iPhone, iPad, and Desktop via [Pushover](http://pushover.net)
 
 ## Usage
 To include this plugin in your site deployment:
