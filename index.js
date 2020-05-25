@@ -20,7 +20,6 @@ const precheck = () => {
     return true;
 };
 module.exports = {
-    name: 'netlify-plugin-pushover',
     async onSuccess() {
         if (precheck()) {
             console.log('Sending build success message via PushOver');
