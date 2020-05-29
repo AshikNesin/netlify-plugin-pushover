@@ -20,22 +20,36 @@ const precheck = () => {
     return true;
 };
 module.exports = {
-    async onSuccess() {
+    async onSuccess({ utils }) {
         if (precheck()) {
-            console.log('Sending build success message via PushOver');
+            console.log('Sending build success message via Pushover');
             const message = getSuccessMsg();
-            await sendPushOverNotification({ message });
+            try {
+                await sendPushOverNotification({ message });
+            } catch (error) {
+                return utils.build.failBuild(
+                    'Failed to send PushOver message',
+                    { error }
+                );
+            }
         }
     },
-    async onError() {
+    async onError({ utils }) {
         if (precheck()) {
-            console.log('Sending build failed message via PushOver');
+            console.log('Sending build failed message via Pushover');
             const message = getErrorMsg();
-            await sendPushOverNotification({
-                message,
-                priority: 1,
-                sound: 'alien',
-            });
+            try {
+                await sendPushOverNotification({
+                    message,
+                    priority: 1,
+                    sound: 'siren',
+                });
+            } catch (error) {
+                return utils.build.failBuild(
+                    'Failed to send PushOver message',
+                    { error }
+                );
+            }
         }
     },
 };

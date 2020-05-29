@@ -24,10 +24,23 @@ const sendPushOverNotification = async payload => {
     } catch (error) {
         // Ensure confidential information are not printed in public build logs
         if (error && error.config && error.config.data) {
-          delete error.config.data
+            delete error.config.data;
         }
 
-        throw error
+        if (error.response.status === 400) {
+            console.log(
+                'Failed to send Pushover.net message possibly due to invalid token/user or your application is over its quota.'
+            );
+            console.log(
+                'Please check Pushover docs for more details: https://pushover.net/api#friendly'
+            );
+        }
+
+        if (error.response.data) {
+            console.log(error.response.data);
+        }
+
+        throw error;
     }
 };
 
