@@ -18,8 +18,17 @@ const sendPushOverNotification = async payload => {
         ...payload,
     };
 
-    const res = await axios.default.post(PUSHOVER_MSG_URL, data);
-    return res.data;
+    try {
+        const res = await axios.default.post(PUSHOVER_MSG_URL, data);
+        return res.data;
+    } catch (error) {
+        // Ensure confidential information are not printed in public build logs
+        if (error && error.config && error.config.data) {
+          delete error.config.data
+        }
+
+        throw error
+    }
 };
 
 module.exports = sendPushOverNotification;
