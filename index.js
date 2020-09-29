@@ -27,7 +27,7 @@ module.exports = {
             try {
                 await sendPushOverNotification({ message });
             } catch (error) {
-                return utils.build.failBuild(
+                return utils.build.failPlugin(
                     'Failed to send PushOver message',
                     { error }
                 );
@@ -45,7 +45,7 @@ module.exports = {
                     sound: 'siren',
                 });
             } catch (error) {
-                return utils.build.failBuild(
+                return utils.build.failPlugin(
                     'Failed to send PushOver message',
                     { error }
                 );
