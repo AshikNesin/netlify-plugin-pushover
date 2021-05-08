@@ -19,6 +19,10 @@ const precheck = () => {
     }
     return true;
 };
+const pluginFailureHandler = (error, utils) => utils.build.failPlugin(
+                    'Failed to send PushOver message',
+                    { error }
+                );
 module.exports = {
     async onSuccess({ utils }) {
         if (precheck()) {
@@ -27,10 +31,7 @@ module.exports = {
             try {
                 await sendPushOverNotification({ message });
             } catch (error) {
-                return utils.build.failPlugin(
-                    'Failed to send PushOver message',
-                    { error }
-                );
+                return pluginFailureHandler(error, utils);
             }
         }
     },
@@ -45,10 +46,7 @@ module.exports = {
                     sound: 'siren',
                 });
             } catch (error) {
-                return utils.build.failPlugin(
-                    'Failed to send PushOver message',
-                    { error }
-                );
+                return pluginFailureHandler(error, utils);
             }
         }
     },
