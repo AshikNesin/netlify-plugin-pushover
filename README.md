@@ -27,6 +27,9 @@ package = "netlify-build-plugin-pushover"
     errorMessage = "" #Optional
 ```
 
+Note: The [[plugins]] line is required for each plugin, even if you have other
+plugins in your netlify.toml file already.
+
 #### Inputs
 
 You can overide the default messages using inputs.
@@ -36,10 +39,34 @@ You can overide the default messages using inputs.
 | successMessage | String | Hi there, we just deployed the site successfully 🎉                         |
 | errorMessage   | String | Hi there, Latest build failed 😱\n\nCheck your build's log for more details |
 
-Note: Site URL depending upon deploy context will be appended to both the messages.
+Note: Site URL depending upon deploy context will be appended to both the
+messages.
 
-Note: The [[plugins]] line is required for each plugin, even if you have other
-plugins in your netlify.toml file already.
+```
+# netlify.toml
+# Production context:
+[context.production]
+
+  [[context.production.plugins]]
+    package = "netlify-build-plugin-pushover"
+
+      [context.production.plugins.inputs]
+        successMessage="Success msg from Production"
+        errorMessage="Error msg from Production"
+
+
+# Deploy Preview context:
+[context.deploy-preview]
+  ACCESS_TOKEN = "not so secret"
+
+  [[context.deploy-preview.plugins]]
+    package = "netlify-build-plugin-pushover"
+
+      [context.deploy-preview.plugins.inputs]
+        successMessage="Success msg from deploy preview"
+        errorMessage="Error msg from deploy preview"
+
+```
 
 ### 3. Set the environmental variable in Netlify
 
