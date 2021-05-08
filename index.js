@@ -10,14 +10,12 @@ const getSuccessMsg = () =>
 const getErrorMsg = () =>
     `Hi there, Latest build failed 😱\n\nCheck your build's log for more details\n\n👉 ${URL}`;
 
-const precheck = ({ utils }) => {
+const precheck = () => {
     if (!PUSHOVER_USER_KEY || !PUSHOVER_API_TOKEN) {
-        utils.build.failPlugin(
+        throw new Error(
             'PUSHOVER_USER_KEY or PUSHOVER_API_TOKEN is not available as environment variable'
         );
-        return false;
     }
-    return true;
 };
 
 const pluginFailureHandler = (error, { utils }) =>
@@ -25,29 +23,27 @@ const pluginFailureHandler = (error, { utils }) =>
 
 module.exports = {
     async onSuccess(pluginApi) {
-        if (precheck(pluginApi)) {
-            console.log('Sending build success message via Pushover');
+        try {
+            precheck();
             const message = getSuccessMsg();
-            try {
-                await sendPushOverNotification({ message });
-            } catch (error) {
-                return pluginFailureHandler(error, pluginApi);
-            }
+            console.log('Sending build success message via Pushover');
+            await sendPushOverNotification({ message });
+        } catch (error) {
+            return pluginFailureHandler(error, pluginApi);
         }
     },
     async onError(pluginApi) {
-        if (precheck(pluginApi)) {
-            console.log('Sending build failed message via Pushover');
+        try {
+            precheck();
             const message = getErrorMsg();
-            try {
-                await sendPushOverNotification({
-                    message,
-                    priority: 1,
-                    sound: 'siren',
-                });
-            } catch (error) {
-                return pluginFailureHandler(error, pluginApi);
-            }
+            console.log('Sending build failed message via Pushover');
+            await sendPushOverNotification({
+                message,
+                priority: 1,
+                sound: 'siren',
+            });
+        } catch (error) {
+            return pluginFailureHandler(error, pluginApi);
         }
     },
 };
