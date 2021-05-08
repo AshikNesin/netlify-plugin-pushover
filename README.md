@@ -57,7 +57,6 @@ messages.
 
 # Deploy Preview context:
 [context.deploy-preview]
-  ACCESS_TOKEN = "not so secret"
 
   [[context.deploy-preview.plugins]]
     package = "netlify-build-plugin-pushover"
