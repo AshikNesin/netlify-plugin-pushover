@@ -1,6 +1,6 @@
 {
   "name": "netlify-plugin-pushover",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "description": "Send real time notification to your devices on Netlify build success/error via Pushover.net",
   "main": "index.js",
   "scripts": {
